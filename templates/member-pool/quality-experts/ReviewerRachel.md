@@ -18,8 +18,8 @@ member:
   name: ReviewerRachel
   type: code-reviewer
   skills: [github]
-  model: bailian/qwen3-coder-plus
-  fallback_model: bailian/qwen3-max-2026-01-23
+  model: {{CODING_MODEL}}
+  fallback_model: {{MAIN_MODEL}}
 ```
 
 ## Dependencies
