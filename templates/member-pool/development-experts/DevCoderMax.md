@@ -1,4 +1,4 @@
-# DevCoderSam - Full-Stack Developer
+# DevCoderMax - Full-Stack Developer
 
 ## Professional Capabilities
 - **Full-Stack Development**: Frontend and backend development expertise
@@ -15,7 +15,7 @@
 ## Invocation Method
 ```yaml
 member:
-  name: DevCoderSam
+  name: DevCoderMax
   type: developer
   skills: [github]
   model: ${CODING_MODEL}
