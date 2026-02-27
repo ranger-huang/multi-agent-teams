@@ -1,38 +1,176 @@
 ---
 name: multi-agent-teams
-version: "1.0"
+version: "2.0"
 description: |
-  Advanced multi-agent team coordination with dynamic role composition, workflow templates, and cross-team collaboration. This skill should be used when the user asks to "create multi-agent teams", "setup team collaboration", "organize multiple teams", "coordinate cross-team projects", "build agent swarms", "implement multi-team orchestration", "setup complex agent coordination", or needs guidance on dynamic team formation, workflow composition, member pooling, cross-team communication, or advanced Agent Teams best practices. 或者当用户说"多团队协作"、"跨团队协调"、"动态组队"、"复杂agent协作"、"多团队项目"、"agent群体"、"灵活组队"、"团队模板"、"工作流编排"时也应使用此技能。
+  Advanced multi-agent team coordination with dynamic role composition, workflow templates, cross-team collaboration, and intelligent task decomposition. This skill should be used when the user asks to "create multi-agent teams", "setup team collaboration", "organize multiple teams", "coordinate cross-team projects", "build agent swarms", "implement multi-team orchestration", "setup complex agent coordination", or needs guidance on dynamic team formation, workflow composition, member pooling, cross-team communication, or advanced Agent Teams best practices. Also handles complex task decomposition and capability identification for optimal team assignment.
 metadata:
   author: mbots-teams
-  version: "1.0.0"
+  version: "2.0.0"
 ---
 
 # Multi-Agent Teams 协作框架
 
-高级多Agent团队协作框架，支持动态角色组合、工作流模板和跨团队协作。
+高级多Agent团队协作框架，支持动态角色组合、工作流模板、跨团队协作和智能任务分解。
 
 ## 核心能力
 
-### 1. 动态角色系统
+### 1. 智能任务分解 (Intelligent Task Decomposition)
+- **任务分析**: 自动分解复杂用户请求为可执行子任务
+- **能力识别**: 识别每个子任务所需的技能类型
+- **技能匹配**: 搜索现有技能或创建新技能来填补能力缺口
+- **工作流生成**: 基于任务特征自动生成最优工作流
+
+### 2. 动态角色系统
 - **角色模板**: 预定义的角色能力模板（discoverer, triage-owner, execution-agent等）
 - **动态实例化**: 角色名称可自定义，摆脱固定命名限制
 - **成员池**: 全局成员池支持跨团队成员重用
 
-### 2. 可组合工作流
+### 3. 可组合工作流
 - **共享工作流模板**: linear-intake, parallel-analysis, multi-team-collab, adaptive-coordination
 - **项目特定覆盖**: 项目可自定义或覆盖全局工作流
 - **自适应选择**: 根据任务复杂度自动选择最佳工作流
 
-### 3. 多团队协作
+### 4. 多团队协作
 - **团队模板**: 可复用的团队配置模板
 - **跨团队协调**: 支持多个团队同时处理大型项目
 - **成员重组**: 动态从成员池组合不同专家
 
-### 4. 状态管理
+### 5. 状态管理
 - **标准化状态文件**: BACKLOG.md, STATUS.md, OPPORTUNITIES.md
 - **心跳驱动**: HEARTBEAT.md 实现自持续运行
 - **文件持久化**: 所有状态通过文件持久化，支持断点续传
+
+## 智能任务分解工作流
+
+```
+User Request → Task Decomposition → Capability Identification → Team Assignment → Execution Plan → Multi-Team Coordination
+```
+
+### 阶段1: 任务分析与分解
+当接收用户请求时，执行以下步骤：
+
+#### 步骤1: 理解用户意图
+- 分析请求的复杂性和范围
+- 识别主要目标和约束条件
+- 确定成功标准
+
+#### 步骤2: 任务分解
+- 将复杂请求分解为原子子任务
+- 确定任务间的依赖关系
+- 评估每个子任务的复杂度
+
+#### 步骤3: 能力识别
+- 为每个子任务识别所需的能力类型
+- 参考能力类型分类体系（见下文）
+- 确定是否需要外部技能
+
+## 能力类型参考 (Capability Types)
+
+基于 Universal Capability Types Reference，以下是主要能力分类：
+
+### 1. 浏览器自动化 (`browser_automation`)
+- **描述**: 网页自动化交互，包括导航、点击、表单填写和数据提取
+- **适用场景**: 登录网站、填写提交表单、网页数据提取、截图、重复性网页任务
+- **相关成员**: 所有成员均可使用，但需配合 browser 工具
+
+### 2. 网络搜索 (`web_search`)
+- **描述**: 使用搜索引擎查找信息
+- **适用场景**: 查找文档、研究主题、获取最新新闻、寻找资源和链接
+- **相关成员**: Discoverer 角色优先使用
+
+### 3. API 集成 (`api_integration`)
+- **描述**: 通过 REST、GraphQL 或其他 API 与第三方服务通信
+- **适用场景**: GitHub 操作、Notion 数据库管理、云服务集成、SaaS 平台自动化
+- **相关成员**: SecuritySam, ArchitectAva, ReviewerRachel
+
+### 4. 数据提取 (`data_extraction`)
+- **描述**: 从各种来源解析和提取结构化数据
+- **适用场景**: PDF 文本提取、HTML 解析、图像 OCR、JSON/XML 解析
+- **相关成员**: QualityQuinn, ArchitectAva
+
+### 5. 数据转换 (`data_transformation`)
+- **描述**: 在格式之间转换、清理和转换数据
+- **适用场景**: 格式转换（CSV 到 JSON）、数据清理和规范化、模式转换、ETL 操作
+- **相关成员**: 所有成员（内置能力）
+
+### 6. 内容生成 (`content_generation`)
+- **描述**: 创建文本、图像或其他内容
+- **适用场景**: 文本摘要、翻译、写作辅助、图像生成
+- **相关成员**: 所有成员（内置 LLM 能力）
+
+### 7. 文件操作 (`file_operations`)
+- **描述**: 读取、写入和操作各种格式的文件
+- **适用场景**: 读写文本文件、处理 CSV/Excel 文件、处理 JSON/YAML 配置、文件压缩/解压
+- **相关成员**: 所有成员
+
+### 8. 消息传递 (`message_delivery`)
+- **描述**: 向外部服务发送通知或消息
+- **适用场景**: Slack 通知、发送邮件、Discord 消息、SMS/推送通知
+- **相关成员**: Facilitator 角色
+
+### 9. 身份验证 (`authentication`)
+- **描述**: 处理身份验证和访问管理
+- **适用场景**: OAuth 流程、API 密钥管理、会话处理、凭据存储
+- **相关成员**: SecuritySam
+
+### 10. 数据库操作 (`database_operations`)
+- **描述**: 与数据库交互进行数据存储和检索
+- **适用场景**: SQL 查询、NoSQL 操作、数据持久化、数据库迁移
+- **相关成员**: ArchitectAva, StructureSteve
+
+### 11. 版本控制 (`version_control`)
+- **描述**: 管理代码仓库和版本控制操作
+- **适用场景**: Git 操作、PR/MR 管理、代码审查自动化、仓库管理
+- **相关成员**: ReviewerRachel, ArchitectAva
+
+### 12. 测试 (`testing`)
+- **描述**: 自动化测试和质量保证
+- **适用场景**: 单元测试、集成测试、端到端测试、测试生成
+- **相关成员**: QualityQuinn, ReviewerRachel
+
+### 13. 部署 (`deployment`)
+- **描述**: 应用部署和 CI/CD 操作
+- **适用场景**: Docker 操作、云部署、CI/CD 管道、发布管理
+- **相关成员**: StructureSteve
+
+## 智能团队组建策略
+
+### 团队选择算法
+根据任务分解结果和能力需求，自动选择最优团队组合：
+
+#### 简单任务 (Simple Tasks)
+- **触发条件**: 单一能力类型，低复杂度
+- **团队组成**: 单个专家成员
+- **工作流**: linear-intake
+
+#### 复杂分析任务 (Complex Analysis)
+- **触发条件**: 多个能力类型，中等复杂度
+- **团队组成**: 相关领域的2-3名专家
+- **工作流**: parallel-analysis
+
+#### 大型多领域项目 (Large Multi-domain Projects)
+- **触发条件**: 跨多个能力领域，高复杂度
+- **团队组成**: 完整的多团队协作（安全+架构+质量）
+- **工作流**: multi-team-collab
+
+#### 不确定复杂度任务 (Uncertain Complexity)
+- **触发条件**: 无法预判复杂度的任务
+- **团队组成**: 自适应团队，根据执行情况动态调整
+- **工作流**: adaptive-coordination
+
+## 成员池架构
+
+### Security Experts Pool
+- **SecuritySam**: 安全与合规审计 (browser_automation, api_integration, authentication)
+- **ComplianceChris**: 合规性专家 (content_generation, file_operations, web_search)
+
+### Architecture Experts Pool  
+- **ArchitectAva**: 架构分析师 (data_extraction, database_operations, version_control, api_integration)
+- **StructureSteve**: 系统结构师 (deployment, database_operations, testing, api_integration)
+
+### Quality Experts Pool
+- **QualityQuinn**: 代码质量专家 (testing, data_extraction, file_operations, content_generation)
+- **ReviewerRachel**: 代码审查专家 (version_control, testing, api_integration, content_generation)
 
 ## 目录结构
 
@@ -42,6 +180,7 @@ metadata:
 ├── role-templates/              # 共享角色模板  
 ├── member-pool/                 # 全局成员池
 ├── teams/                       # 团队模板
+├── references/                  # 能力类型参考文档
 └── projects/                    # 项目实例
     └── {project-name}/
         ├── team-config/         # 项目特定配置
@@ -50,12 +189,12 @@ metadata:
 
 ## 使用场景
 
-| 场景 | 触发词 | 工作流选择 |
-|------|--------|-----------|
-| 简单项目分析 | "拉个团队分析项目" | linear-intake |
-| 复杂安全审计 | "启动安全和架构团队" | parallel-analysis |
-| 大型多团队项目 | "为这个项目启动多团队协作" | multi-team-collab |
-| 自适应任务 | "帮我处理这个复杂任务" | adaptive-coordination |
+| 场景 | 触发词 | 工作流选择 | 团队组成 |
+|------|--------|-----------|----------|
+| 简单项目分析 | "拉个团队分析项目" | linear-intake | 单专家 |
+| 复杂安全审计 | "启动安全和架构团队" | parallel-analysis | 安全+架构 |
+| 大型多团队项目 | "为这个项目启动多团队协作" | multi-team-collab | 完整三团队 |
+| 自适应任务 | "帮我处理这个复杂任务" | adaptive-coordination | 动态调整 |
 
 ## 工作流模板
 
@@ -101,35 +240,23 @@ Team1: ANALYZE → Team2: SECURITY-AUDIT → Team3: QUALITY-REVIEW
 - **Proactive Actions**: 自动触发工作流步骤
 - **Escalation Rules**: 问题升级机制
 
-## 成员池架构
-
-### Security Experts Pool
-- SecuritySam: 安全与合规审计
-- ComplianceChris: 合规性专家
-
-### Architecture Experts Pool  
-- ArchitectAva: 架构分析师
-- StructureSteve: 系统结构师
-
-### Quality Experts Pool
-- QualityQuinn: 代码质量专家
-- ReviewerRachel: 代码审查专家
-
 ## 团队编排器
 
 主协调器负责：
-1. **工作流选择**: 根据任务特征选择最佳工作流
-2. **成员分配**: 从成员池动态分配合适专家
-3. **进度监控**: 实时跟踪所有团队状态
-4. **冲突解决**: 处理团队间资源竞争
-5. **结果汇总**: 生成综合报告
+1. **任务分解**: 分析用户请求并分解为子任务
+2. **能力识别**: 识别每个子任务所需的能力类型
+3. **工作流选择**: 根据任务特征选择最佳工作流
+4. **成员分配**: 从成员池动态分配合适专家
+5. **进度监控**: 实时跟踪所有团队状态
+6. **冲突解决**: 处理团队间资源竞争
+7. **结果汇总**: 生成综合报告
 
 ## 执行流程
 
-### 阶段1: 配置检测
-- 检查项目是否存在 team-config/
-- 加载项目特定或全局工作流模板
-- 识别可用的成员池
+### 阶段1: 智能分析
+- 接收用户请求
+- 执行任务分解和能力识别
+- 选择最优工作流和团队组成
 
 ### 阶段2: 团队组建  
 - 根据工作流需求选择团队模板
@@ -177,6 +304,7 @@ Team1: ANALYZE → Team2: SECURITY-AUDIT → Team3: QUALITY-REVIEW
 | 工作流阻塞 | 心跳检测 + 自动升级 |
 | 跨团队冲突 | 协调器介入 + 重新分配 |
 | 质量不达标 | 打回重做 + 专家介入 |
+| 能力缺口 | 自动创建新技能或调整团队 |
 
 ## 模型配置策略
 
@@ -186,14 +314,14 @@ Team1: ANALYZE → Team2: SECURITY-AUDIT → Team3: QUALITY-REVIEW
 - **回退机制**: 当编码专用模型不可用时，自动回退到主模型
 
 ### 当前成员模型配置
-| 成员 | 类型 | 模型配置 |
-|------|------|----------|
-| SecuritySam | 安全专家 | `bailian/qwen3-coder-plus` |
-| ComplianceChris | 合规专家 | `bailian/qwen3-coder-plus` |
-| ArchitectAva | 架构分析师 | `bailian/qwen3-coder-plus` |
-| StructureSteve | 系统结构师 | `bailian/qwen3-coder-plus` |
-| QualityQuinn | 代码质量专家 | `bailian/qwen3-coder-plus` |
-| ReviewerRachel | 代码审查专家 | `bailian/qwen3-coder-plus` |
+| 成员 | 类型 | 模型配置 | 主要能力类型 |
+|------|------|----------|-------------|
+| SecuritySam | 安全专家 | `bailian/qwen3-coder-plus` | browser_automation, api_integration, authentication |
+| ComplianceChris | 合规专家 | `bailian/qwen3-max-2026-01-23` | content_generation, file_operations, web_search |
+| ArchitectAva | 架构分析师 | `bailian/qwen3-coder-plus` | data_extraction, database_operations, version_control |
+| StructureSteve | 系统结构师 | `bailian/qwen3-coder-plus` | deployment, database_operations, testing |
+| QualityQuinn | 代码质量专家 | `bailian/qwen3-coder-plus` | testing, data_extraction, file_operations |
+| ReviewerRachel | 代码审查专家 | `bailian/qwen3-coder-plus` | version_control, testing, api_integration |
 
 ## 与现有技能集成
 
@@ -201,6 +329,8 @@ Team1: ANALYZE → Team2: SECURITY-AUDIT → Team3: QUALITY-REVIEW
 - **healthcheck**: 用于安全审计成员
 - **github**: 用于代码审查成员  
 - **summarize**: 用于报告生成成员
+- **task-decomposer**: 用于复杂任务分解
+- **find-skills**: 用于技能发现和匹配
 
 ## 向后兼容性
 
@@ -210,4 +340,4 @@ Team1: ANALYZE → Team2: SECURITY-AUDIT → Team3: QUALITY-REVIEW
 - 无瓶颈设计
 - 心跳驱动自动化
 
-但提供了更灵活的角色命名、工作流组合和多团队协作能力。
+但提供了更灵活的角色命名、工作流组合、多团队协作能力和智能任务分解功能。

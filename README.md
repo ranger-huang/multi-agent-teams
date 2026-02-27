@@ -1,7 +1,7 @@
 # Multi-Agent Teams Skill
 
 ## 概述
-Multi-Agent Teams 是一个高级的多团队协作技能，支持动态角色组合、可组合工作流、成员池架构和项目级别的自定义配置。
+Multi-Agent Teams 是一个高级的多团队协作技能，支持动态角色组合、可组合工作流、成员池架构和项目级别的自定义配置。现在集成了任务分解和能力识别功能，能够智能分析用户需求并自动组建最合适的专家团队。
 
 ## 核心特性
 
@@ -20,6 +20,12 @@ Multi-Agent Teams 是一个高级的多团队协作技能，支持动态角色�
 - **全局成员池**: 按专业领域组织的成员池
 - **动态组合**: 从池中选择合适的成员组成团队
 - **技能匹配**: 成员与所需技能自动匹配
+
+### 🧠 智能任务分解
+- **需求分析**: 自动分解复杂用户请求为可执行子任务
+- **能力识别**: 识别每个子任务所需的技能类型
+- **团队推荐**: 基于能力需求推荐最佳专家组合
+- **技能发现**: 自动搜索现有技能或创建新技能
 
 ### 📁 项目级配置
 - **共享模板**: 全局工作流和角色模板
@@ -55,6 +61,7 @@ Multi-Agent Teams 是一个高级的多团队协作技能，支持动态角色�
 ├── role-templates/              # 共享角色模板  
 ├── member-pool/                 # 全局成员池
 ├── teams/                       # 团队模板
+├── references/                  # 能力类型参考文档
 └── projects/                    # 项目实例
     └── {project-name}/
         ├── team-config/         # 项目特定配置
@@ -72,6 +79,27 @@ npx skills add multi-agent-teams -g -y
 1. 在项目目录中创建 `team-config/` 目录
 2. 配置工作流、角色和成员
 3. 使用触发词启动团队
+4. 系统会自动进行任务分解和能力匹配
+
+## 能力类型支持
+
+基于 Universal Capability Types Reference，支持以下能力类型：
+- **Browser Automation**: Web自动化和数据提取
+- **Web Search**: 互联网信息搜索
+- **API Integration**: 第三方服务集成
+- **Data Extraction**: 数据解析和提取
+- **Data Transformation**: 数据转换和清洗
+- **Content Generation**: 内容生成（通常由LLM原生处理）
+- **File Operations**: 文件操作
+- **Message Delivery**: 消息传递
+- **Scheduling**: 任务调度
+- **Authentication**: 身份验证
+- **Database Operations**: 数据库操作
+- **Code Execution**: 代码执行
+- **Version Control**: 版本控制
+- **Testing**: 测试自动化
+- **Deployment**: 部署操作
+- **Monitoring**: 监控和告警
 
 ## 模型配置策略
 
@@ -93,3 +121,4 @@ npx skills add multi-agent-teams -g -y
 - **完全兼容** reflectt/agent-team-kit 的文件格式
 - **向后兼容** 现有的 Agent Teams 工作流
 - **支持** OpenClaw 所有版本
+- **集成** super-skills 的任务分解和能力识别功能
