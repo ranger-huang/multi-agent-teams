@@ -1,0 +1,22 @@
+{
+  "name": "multi-agent-teams",
+  "version": "1.0.0",
+  "description": "Advanced multi-agent team coordination with dynamic role composition, workflow templates, and cross-team collaboration",
+  "keywords": [
+    "openclaw",
+    "agent",
+    "multi-agent",
+    "team-coordination",
+    "workflow"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/multi-agent-teams.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/multi-agent-teams/issues"
+  },
+  "homepage": "https://github.com/your-username/multi-agent-teams#readme"
+}

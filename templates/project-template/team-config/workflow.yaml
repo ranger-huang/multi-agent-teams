@@ -1,0 +1,28 @@
+# Project-Specific Workflow Configuration
+# This file overrides global workflow templates
+
+workflow:
+  # Choose from: linear-intake, parallel-analysis, multi-team-collab, adaptive-coordination
+  type: "parallel-analysis"
+  
+  # Custom workflow parameters
+  parameters:
+    analysis_timeout: 30 # minutes
+    quality_gates: true
+    user_confirmation_points: 
+      - "team_formation"
+      - "result_delivery"
+      
+  # Team composition override (optional)
+  team_composition:
+    discoverer: "ArchitectAva"
+    security_auditor: "SecuritySam" 
+    quality_reviewer: "QualityQuinn"
+    documentation_specialist: "ReporterRiley"
+    
+  # State file locations
+  state_files:
+    backlog: "./process/BACKLOG.md"
+    status: "./process/STATUS.md" 
+    opportunities: "./process/OPPORTUNITIES.md"
+    heartbeat: "./process/HEARTBEAT.md"

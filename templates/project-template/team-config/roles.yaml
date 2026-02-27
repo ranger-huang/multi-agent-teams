@@ -1,0 +1,52 @@
+# Project Team Roles Configuration
+
+# Role assignments for this project
+roles:
+  discoverer:
+    name: "ProjectDiscoverer"
+    template: "discoverer"
+    responsibilities:
+      - "Project-specific opportunity discovery"
+      - "External monitoring for this domain"
+      - "Research and gap analysis"
+    
+  triage_owner:
+    name: "ProjectTriageOwner" 
+    template: "triage-owner"
+    responsibilities:
+      - "Project backlog management"
+      - "Task prioritization for this project"
+      - "Queue health maintenance"
+      
+  facilitator:
+    name: "ProjectFacilitator"
+    template: "facilitator" 
+    responsibilities:
+      - "Team health monitoring"
+      - "Conflict resolution"
+      - "Process improvement for this project"
+
+# Execution roles (dynamically assigned based on workflow)
+execution_roles:
+  - name: "SecurityAuditor"
+    specialty: "security-compliance"
+    assigned_from: "security-experts"
+    
+  - name: "ArchitectureAnalyst" 
+    specialty: "system-architecture"
+    assigned_from: "architecture-experts"
+    
+  - name: "QualityReviewer"
+    specialty: "code-quality"
+    assigned_from: "quality-experts"
+    
+  - name: "DocumentationSpecialist"
+    specialty: "reporting-documentation"
+    assigned_from: "documentation-experts"
+
+# Role assignment rules
+assignment_rules:
+  - if task_type == "security-audit": assign SecurityAuditor
+  - if task_type == "architecture-analysis": assign ArchitectureAnalyst  
+  - if task_type == "code-review": assign QualityReviewer
+  - if task_type == "reporting": assign DocumentationSpecialist

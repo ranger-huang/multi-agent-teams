@@ -1,0 +1,61 @@
+# Project Team Members Configuration
+
+# Member pool selections for this project
+members:
+  security_experts:
+    - name: "SecuritySam"
+      source: "member-pool/security-experts/SecuritySam.md"
+      skills: ["healthcheck"]
+      model: "opus"
+      
+  architecture_experts:
+    - name: "ArchitectAva"
+      source: "member-pool/architecture-experts/ArchitectAva.md" 
+      skills: []
+      model: "opus"
+      
+  quality_experts:
+    - name: "QualityQuinn"
+      source: "member-pool/quality-experts/QualityQuinn.md"
+      skills: []
+      model: "sonnet"
+      
+  documentation_experts:
+    - name: "ReporterRiley"
+      source: "member-pool/documentation-experts/ReporterRiley.md"
+      skills: ["summarize"]
+      model: "opus"
+
+# Member selection rules
+selection_rules:
+  - if workflow == "parallel-analysis":
+      use_members: ["SecuritySam", "ArchitectAva", "QualityQuinn", "ReporterRiley"]
+      
+  - if workflow == "multi-team-collab":
+      use_teams:
+        - team: "ArchitectureTeam"
+          members: ["ArchitectAva"]
+        - team: "SecurityTeam"  
+          members: ["SecuritySam"]
+        - team: "QualityTeam"
+          members: ["QualityQuinn"]
+        - team: "DeliveryTeam"
+          members: ["ReporterRiley"]
+
+# Member capabilities matrix
+capabilities:
+  SecuritySam:
+    specialties: ["security-audit", "compliance-check", "risk-assessment"]
+    output_formats: ["security-report.md", "compliance-report.md"]
+    
+  ArchitectAva:
+    specialties: ["architecture-analysis", "dependency-mapping", "tech-stack-identification"]
+    output_formats: ["architecture-report.md", "dependency-graph.md"]
+    
+  QualityQuinn:
+    specialties: ["code-review", "best-practices", "technical-debt-analysis"]
+    output_formats: ["quality-report.md", "review-findings.md"]
+    
+  ReporterRiley:
+    specialties: ["report-generation", "executive-summary", "action-item-tracking"]
+    output_formats: ["final-report.md", "executive-summary.md", "action-items.md"]
