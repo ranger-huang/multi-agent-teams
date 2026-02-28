@@ -1,28 +1,67 @@
-# Project-Specific Workflow Configuration
-# This file overrides global workflow templates
+# AIDevOps Project Workflow Configuration
+# This file defines the workflow for a specific project instance
 
 workflow:
-  # Choose from: linear-intake, parallel-analysis, multi-team-collab, adaptive-coordination
-  type: "parallel-analysis"
+  # Workflow type: linear-intake | parallel-analysis | multi-team-collab | adaptive-coordination
+  type: "multi-team-collab"
   
-  # Custom workflow parameters
-  parameters:
-    analysis_timeout: 30 # minutes
-    quality_gates: true
-    user_confirmation_points: 
-      - "team_formation"
-      - "result_delivery"
-      
-  # Team composition override (optional)
-  team_composition:
-    discoverer: "ArchitectAva"
-    security_auditor: "SecuritySam" 
-    quality_reviewer: "QualityQuinn"
-    documentation_specialist: "ReporterRiley"
+  # Workflow description
+  description: "Multi-team collaboration workflow for comprehensive project analysis"
+  
+  # Team composition configuration
+  teams:
+    - name: "DiscoveryTeam"
+      workflow: "linear-intake"
+      members:
+        - role: "Discoverer"
+          member: "CloudExplorerAlex"
+          from_pool: "discovery-experts"
+        - role: "Coordinator"
+          member: "DevOpsPilotMaya"
+          from_pool: "coordination-experts"
     
-  # State file locations
-  state_files:
-    backlog: "./process/BACKLOG.md"
-    status: "./process/STATUS.md" 
-    opportunities: "./process/OPPORTUNITIES.md"
-    heartbeat: "./process/HEARTBEAT.md"
+    - name: "ArchitectureTeam"
+      workflow: "parallel-analysis"
+      members:
+        - role: "Architecture Analyst"
+          member: "ArchitectAva"
+          from_pool: "architecture-experts"
+        - role: "System Architect"
+          member: "StructureSteve"
+          from_pool: "architecture-experts"
+    
+    - name: "SecurityTeam"
+      workflow: "parallel-analysis"
+      members:
+        - role: "Security Auditor"
+          member: "SecuritySam"
+          from_pool: "security-experts"
+        - role: "Compliance Specialist"
+          member: "ComplianceChris"
+          from_pool: "security-experts"
+    
+    - name: "QualityTeam"
+      workflow: "parallel-analysis"
+      members:
+        - role: "Quality Expert"
+          member: "QualityQuinn"
+          from_pool: "quality-experts"
+        - role: "Code Reviewer"
+          member: "ReviewerRachel"
+          from_pool: "quality-experts"
+
+  # Execution strategy
+  execution:
+    mode: "parallel"
+    dependency_management: "coordinator-driven"
+    quality_gates: true
+
+  # Model configuration
+  models:
+    primary: "{{PRIMARY_MODEL}}"
+    coding: "{{CODING_MODEL}}"
+
+  # Integration points
+  integrations:
+    - skill: "agent-teams-playbook"
+    - skills: ["healthcheck", "github", "summarize"]
