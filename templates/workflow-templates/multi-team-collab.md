@@ -1,143 +1,68 @@
-# Multi-Team Collaboration Workflow Template
+# AIDevOps Multi-Team Collaboration Workflow
 
-## Overview
-Designed for enterprise-scale projects requiring multiple specialized teams to work together. Each team has its own focus area but coordinates through shared processes and communication channels.
+Advanced multi-team collaboration workflow specifically designed for AIDevOps projects, incorporating Discovery/Coordination layer and complete Executor teams.
 
-## When to Use
-- Large enterprise applications with multiple domains
-- Projects requiring specialized expertise (security, architecture, compliance, etc.)
-- Cross-functional initiatives spanning multiple business areas
-- Complex systems requiring comprehensive analysis from multiple perspectives
+## Workflow Structure
 
-## Team Structure
+### Phase 1: Discovery & Coordination (Linear Intake)
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ Architecture    │    │ Security &      │    │ Quality &       │
-│ Team            │    │ Compliance      │    │ Testing         │
-│                 │    │ Team            │    │ Team            │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-        │                      │                      │
-        └──────────┬───────────┴───────────┬──────────┘
-                   │                       │
-           ┌───────▼───────┐     ┌───────▼───────┐
-           │ Coordination  │     │ Integration   │
-           │ Team          │     │ Team          │
-           └───────┬───────┘     └───────┬───────┘
-                   │                       │
-                   └──────────┬────────────┘
-                              │
-                    ┌─────────▼─────────┐
-                    │ Delivery Team     │
-                    └───────────────────┘
+CloudExplorerAlex (Discoverer) → DevOpsPilotMaya (Facilitator)
 ```
 
-## Team Responsibilities
+### Phase 2: Parallel Execution (Multi-Team Analysis)
+```
+ArchitectureTeam ──┐
+SecurityTeam   ├──→ DevelopmentTeam → Quality Gates → Final Delivery  
+DevelopmentTeam ──┘
+QualityTeam    ──┘
+```
 
-### Architecture Team
-- System architecture analysis
-- Dependency mapping
-- Technical debt assessment
-- Migration path planning
+## Team Composition
 
-### Security & Compliance Team  
-- Security vulnerability scanning
-- Compliance requirement validation
-- Risk assessment and mitigation
-- Security architecture review
+### Coordination Layer
+- **CloudExplorerAlex**: Cloud Native/AI/DevOps Domain Expert (Discoverer)
+- **DevOpsPilotMaya**: Task Assignment Coordinator (Facilitator)
 
-### Quality & Testing Team
-- Code quality analysis
-- Test coverage assessment
-- Best practices validation
-- Performance bottleneck identification
+### Executor Teams (执剑人 - Executors)
+- **Architecture Team**: ArchitectAva, StructureSteve
+- **Security Team**: SecuritySam, ComplianceChris  
+- **Development Team**: DevBuilderAlex, DevCoderSam
+- **Quality Team**: QualityQuinn, ReviewerRachel
 
-### Coordination Team
-- Inter-team communication facilitation
-- Dependency management
-- Timeline coordination
-- Resource allocation
+## Integration with Spec-Kit (SDD) Workflow
 
-### Integration Team
-- Cross-team finding synthesis
-- Integration point validation
-- End-to-end flow analysis
-- System-wide impact assessment
+This workflow integrates with the Spec-Driven Development (SDD) cycle:
 
-### Delivery Team
-- Final report compilation
-- Executive summary creation
-- Stakeholder communication
-- Action item tracking
-
-## Workflow Phases
-
-### Phase 1: Team Formation & Planning (15 minutes)
-- Assign team members from member pool
-- Establish inter-team communication channels
-- Define shared success criteria
-- Set up process files and coordination mechanisms
-
-### Phase 2: Parallel Team Execution (30-60 minutes)
-- Each team executes their specialized analysis
-- Regular coordination checkpoints every 15 minutes
-- Shared status updates in central `process/STATUS.md`
-- Cross-team discovery sharing in `process/OPPORTUNITIES.md`
-
-### Phase 3: Integration & Synthesis (15-20 minutes)
-- Integration team combines findings from all teams
-- Coordination team resolves conflicts and dependencies
-- Unified priority framework established
-- Cross-cutting recommendations developed
-
-### Phase 4: Delivery & Handoff (10 minutes)
-- Delivery team creates final comprehensive report
-- Executive summary with key findings and recommendations
-- Detailed action items with owners and timelines
-- Follow-up coordination plan established
+1. **Constitution Phase**: Discoverer identifies project constraints and requirements
+2. **Specification Phase**: Architecture team creates detailed specifications  
+3. **Planning Phase**: All teams contribute to comprehensive planning
+4. **Implementation Phase**: Development team executes with quality/security oversight
+5. **Review Phase**: Quality team validates against specifications
+6. **Delivery Phase**: Facilitator coordinates final delivery and handoff
 
 ## State Management
 
-### Central Process Files
-- `process/BACKLOG.md`: Contains tasks for all teams with team assignments
-- `process/STATUS.md`: Tracks status across all teams with team-specific sections
-- `process/OPPORTUNITIES.md`: Shared discovery repository for all teams
-- `process/HEARTBEAT.md`: Multi-team coordination heartbeat checks
+- **BACKLOG.md**: Contains ready tasks for all executor teams
+- **STATUS.md**: Tracks active work across all teams
+- **OPPORTUNITIES.md**: Shared discovery repository managed by Discoverer
+- **HEARTBEAT.md**: Automated checks and proactive actions for team coordination
 
-### Team-Specific Files
-- Each team maintains their own working directories
-- Team-specific reports are consolidated by Integration team
-- Cross-team dependencies documented in shared dependency matrix
+## Model Configuration
 
-## Communication Protocol
+- **Primary Model** (`{{PRIMARY_MODEL}}`): Used by Discoverer and Facilitator for general tasks
+- **Coding Model** (`{{CODING_MODEL}}`): Used by all Executor teams for specialized technical work
 
-### Status Updates
-- All teams update `process/STATUS.md` every 15 minutes
-- Critical blockers escalated immediately to Coordination team
-- Daily standup equivalent through file-based updates
+## Quality Gates
 
-### Decision Making
-- Team-level decisions made autonomously
-- Cross-team decisions require Coordination team facilitation
-- Strategic decisions escalated to human lead
-- Consensus required for system-wide changes
+- Cross-team validation of findings
+- Acceptance criteria verification by Quality team
+- Security and compliance validation by Security team
+- Architecture consistency checks by Architecture team
+- Implementation quality assurance by Development team
 
-### Conflict Resolution
-- Technical conflicts resolved through evidence-based discussion
-- Priority conflicts resolved by Coordination team using business impact criteria
-- Resource conflicts resolved through Coordination team mediation
-- Escalation path: Team → Coordination → Human Lead
+## Escalation Rules
 
-## Success Criteria
-- [ ] All teams complete their specialized analysis
-- [ ] Cross-team dependencies properly identified and managed
-- [ ] Integrated findings provide comprehensive system view
-- [ ] No conflicting recommendations between teams
-- [ ] Final delivery meets stakeholder requirements
-- [ ] Action items are clear, prioritized, and assigned
-
-## Failure Handling
-- Individual team failures don't block other teams
-- Coordination team manages impact of partial team failures
-- Partial delivery possible with clear scope limitations
-- Retry mechanisms for failed team analyses
-- Human lead intervention for critical coordination failures
+- Blocked tasks escalated after 24 hours
+- Priority conflicts resolved by Facilitator
+- Technical disagreements resolved through evidence-based discussion
+- Strategic decisions escalated to human stakeholders
