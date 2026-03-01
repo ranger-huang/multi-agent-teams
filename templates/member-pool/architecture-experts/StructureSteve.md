@@ -33,3 +33,7 @@ member:
 - Cloud infrastructure design
 - Network and storage architecture
 - System monitoring and observability
+
+## Recommended Skills
+- **context-mapping**: For understanding system boundaries and integration patterns
+- **deepwiki**: For deep research on architectural best practices and patterns

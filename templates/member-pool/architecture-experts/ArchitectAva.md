@@ -32,3 +32,7 @@ member:
 - Database design and optimization
 - Cloud infrastructure patterns
 - DevOps and deployment architecture
+
+## Recommended Skills
+- **context-mapping**: For understanding system boundaries and integration patterns
+- **deepwiki**: For researching architecture patterns and best practices

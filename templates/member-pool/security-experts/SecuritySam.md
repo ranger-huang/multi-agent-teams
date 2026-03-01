@@ -32,3 +32,8 @@ member:
 - Works well with Architecture team for security architecture review
 - Coordinates with Quality team for secure coding practices
 - Provides input to Delivery team for security recommendations
+
+## Recommended Skills
+- **deepwiki**: For deep security research and compliance standard lookup
+- **healthcheck**: For automated security scanning and hardening
+- **github**: For security-focused code review and vulnerability tracking

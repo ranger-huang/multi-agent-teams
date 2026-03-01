@@ -32,3 +32,6 @@ member:
 - Works with Security team for comprehensive security compliance
 - Coordinates with Architecture team for compliant system design
 - Provides input to Quality team for compliance testing
+
+## Recommended Skills
+- **deepwiki**: For deep regulatory research and compliance pattern lookup

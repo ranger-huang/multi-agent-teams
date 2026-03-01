@@ -33,3 +33,7 @@ member:
 - Database query optimization
 - API design consistency
 - Security vulnerability detection in code
+
+## Recommended Skills
+- **clean-code**: For maintaining code quality and best practices
+- **deepwiki**: For deep knowledge retrieval during code reviews

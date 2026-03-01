@@ -34,3 +34,8 @@ member:
 - API development and integration
 - Testing frameworks and quality assurance
 - Deployment automation and DevOps
+
+## Recommended Skills
+- **deepwiki**: For deep knowledge retrieval during implementation
+- **context-mapping**: For understanding system boundaries and integration patterns  
+- **clean-code**: For maintaining code quality and best practices

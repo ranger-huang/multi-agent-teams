@@ -32,3 +32,7 @@ member:
 - Security vulnerabilities in code
 - Test coverage and quality
 - Documentation completeness
+
+## Recommended Skills
+- **clean-code**: For maintaining code quality standards and best practices
+- **deepwiki**: For researching quality best practices and industry standards
